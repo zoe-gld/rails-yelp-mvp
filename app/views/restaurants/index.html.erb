@@ -1,0 +1,17 @@
+<h1>Discover all restaurants of your neighbourhood</h1>
+
+<div class="card-deck">
+  <% @restaurants.each do |restau| %>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card">
+        <img src="https://images.pexels.com/photos/1036857/pexels-photo-1036857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img-top" alt="open">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to(restau.name, restaurant_path(restau.id)) %></h5>
+            <p class="card-text"><%= restau.address %></p>
+            <p class="card-text"><%= restau.phone_number %></p>
+            <p class="card-text"><small class="text-muted"><%= restau.category %></small></p>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>

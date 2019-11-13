@@ -1,0 +1,25 @@
+<div class="container">
+
+<div class="card mb-3">
+  <img src="https://images.pexels.com/photos/1036857/pexels-photo-1036857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="card-img-top" alt="open">
+  <div class="card-body">
+    <h5 class="card-title"><%= @restaurant.name %></h5>
+    <p class="card-text"><%= @restaurant.address %></p>
+    <p class="card-text"><%= @restaurant.phone_number %></p>
+    <p class="card-text"><small class="text-muted"><%= @restaurant.category %></small></p>
+  </div>
+</div>
+
+  <ul class="list-group">
+    <% @restaurant.reviews.reverse.each do |review| %>
+      <li class="list-group-item"><%= '⭐️' * review.rating  %> <%= review.content %> posted on <%= review.created_at %></li>
+    <% end %>
+  </ul>
+
+  <hr>
+
+  <h5>Add a new review to this restaurant</h5>
+  <% @review = Review.new %>
+  <%= render 'reviews-form' %>
+
+</div>

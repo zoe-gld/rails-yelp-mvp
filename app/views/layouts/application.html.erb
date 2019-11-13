@@ -13,6 +13,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-light bg-light">
+      <div><a class="navbar-brand"><%= link_to('↖️ Homepage', restaurants_path) %></a></div>
+      <button class="btn btn-light my-2 my-sm-0" type="submit"><%= link_to('New restaurant', new_restaurant_path) %></button>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
