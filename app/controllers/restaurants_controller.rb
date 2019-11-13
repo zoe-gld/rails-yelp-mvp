@@ -16,7 +16,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save # false / true
-      redirect_to restaurants_path, notice: 'Restaurant was successfully created.'
+      redirect_to restaurant_path(@restaurant), notice: 'Restaurant was successfully created.'
     else
       # render the 'new.html.erb' view
       render :new
