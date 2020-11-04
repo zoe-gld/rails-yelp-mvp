@@ -11,6 +11,7 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    @restaurants = Restaurant.all.to_json
   end
 
   def create
@@ -24,14 +25,13 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  private
 
-      private
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
-      def set_restaurant
-        @restaurant = Restaurant.find(params[:id])
-      end
-
-      def restaurant_params
-        params.require(:restaurant).permit(:name, :address, :phone_number, :category)
-      end
-    end
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :address, :phone_number, :category)
+  end
+end

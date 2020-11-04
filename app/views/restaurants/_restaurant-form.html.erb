@@ -11,8 +11,8 @@
   <% end %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address %>
+    <%= f.input :name, input_html: { id: 'name_input' } %>
+    <%= f.input :address, input_html: { id: 'address_input' } %>
     <%= f.input :phone_number %>
     <%= f.input :category %>
   </div>
@@ -21,3 +21,11 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
+
+<script>
+  document.querySelector("#name_input").addEventListener("input", () => {
+    let restaurant = <%= raw @restaurants %>.filter(restaurant => restaurant.id === parseInt(event.currentTarget.value)) || []
+    document.querySelector("#address_input").value = restaurant[0]?.address || ""
+  })
+</script>
